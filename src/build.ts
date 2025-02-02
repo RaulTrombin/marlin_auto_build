@@ -42,9 +42,9 @@ export async function processBuild(buildName: string, build: BuildSchema, kind: 
     }
 
     const firmware = (await readdir(`./dist/current_build/.pio/build/${build.board_env}`)).find(f => f.includes("firmware-") && f.includes(".bin"));
-    if (!firmware) {
-        throw new Error("Failed to build firmware");
-    }
+    // if (!firmware) {
+    //     throw new Error("Failed to build firmware");
+    // }
     const firmwarePath = `./dist/current_build/.pio/build/${build.board_env}/${firmware}`;
     await copyFile(firmwarePath, `./dist/assets/${firmware}`);
 

@@ -52,9 +52,9 @@ export function runPlatformIO(boardEnv: string) {
             PATH=$PATH:~/.platformio/penv/bin platformio run -e ${boardEnv}
         `);
         //too noicy, keep only stderr
-        // ps.stdout?.on("data", function(d) {
-        //     console.log(d.toString());
-        // });
+        ps.stdout?.on("data", function(d) {
+            console.log(d.toString());
+        });
         ps.stderr?.on("data", function(d) {
             console.error(d.toString());
         });
